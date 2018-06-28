@@ -6,11 +6,12 @@
   "scripts": {
     "server": "node server.js",
     "client": "cd client && npm run start",
-    "start": "./node_modules/.bin/concurrently \"./node_modules/.bin/nodemon\" \"npm run client\"",
-    "build": "cd client && npm run build",
+    "start": "./node_modules/.bin/concurrently \"./node_modules/.bin/nodemon\" \"npm run client\" \"react-scripts starts\"",
+    "build": "cd client && npm run build\"react-scripts build\"",
     "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "installDeps": "yarn && cd client && yarn"
+    "test": "echo \"Error: no test specified\" && exit 1\"react-scripts test --env=jsdom\"", 
+    "installDeps": "yarn && cd client && yarn",
+    "eject": "react-scripts eject"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,9 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14"
   }
 }
