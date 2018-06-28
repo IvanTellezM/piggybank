@@ -2,6 +2,13 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const sequelize = require("sequelize");
+
+app.use(bodyParser.urlencoded({extended: true }));
+app.use(bodyParser.json());
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
