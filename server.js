@@ -5,8 +5,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-// const sequelize = require("sequelize");
-const mongoose = require("mongoose");
+const sequelize = require("sequelize");
+// const mongoose = require("mongoose");
 const routes = require("./routes");
 
 app.use(bodyParser.urlencoded({extended: true }));
@@ -26,11 +26,11 @@ app.get("*", function(req, res) {
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/piggydb" );
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/piggydb" );
 
-app.listen(PORT, function() {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log(`🌎 ==> Server now on port ${PORT}!`);
+  });
 });
 
-
-//
