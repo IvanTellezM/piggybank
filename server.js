@@ -3,8 +3,8 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const bodyParser = require("body-parser");
-const passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// const passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const sequelize = require("sequelize");
 // const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -24,13 +24,13 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.use(routes);
+// app.use(routes);
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/piggydb" );
 
-db.sequelize.sync().then(function() {
+// db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log(`🌎 ==> Server now on port ${PORT}!`);
   });
-});
+// });
 

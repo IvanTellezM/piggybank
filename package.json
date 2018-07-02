@@ -9,7 +9,7 @@
     "start": "./node_modules/.bin/concurrently \"./node_modules/.bin/nodemon\" \"npm run client\" \"react-scripts starts\"",
     "build": "cd client && npm run build\"react-scripts build\"",
     "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master",
-    "test": "echo \"Error: no test specified\" && exit 1\"react-scripts test --env=jsdom\"", 
+    "test": "echo \"Error: no test specified\" && exit 1\"react-scripts test --env=jsdom\"",
     "installDeps": "yarn && cd client && yarn",
     "eject": "react-scripts eject"
   },
@@ -20,7 +20,9 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "@material-ui/icons": "^1.1.0",
     "express": "^4.15.4",
+    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14"
