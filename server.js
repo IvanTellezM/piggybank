@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const bodyParser = require("body-parser");
 const passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const sequelize = require("sequelize");
 // const mongoose = require("mongoose");
 const routes = require("./routes");
