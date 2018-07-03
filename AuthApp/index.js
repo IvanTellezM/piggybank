@@ -6,7 +6,10 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => res.sendFile('auth.html', { root : __dirname}));
+
+app.get('/', (req, res) => res.sendFile('./auth.html', { root : __dirname}));
+
+app.get('/sign', (req, res) => res.sendFile('./signup.html', { root : __dirname}));
 
 const port = process.env.PORT || 3000;
 app.listen(port , () => console.log('App listening on port ' + port));
