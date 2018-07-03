@@ -55,7 +55,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-      UserDetails.findOne({
+      User.findOne({
         username: username
       }, function(err, user) {
         if (err) {
