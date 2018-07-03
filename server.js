@@ -5,8 +5,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
 
-const mongoose = require("mongoose");
-const routes = require("../routes");
 
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
@@ -23,9 +21,7 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.use(routes);
-
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/piggydb" );
+require("./server/routes")(app);
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
