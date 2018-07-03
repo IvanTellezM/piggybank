@@ -5,9 +5,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
 
-const sequelize = require("sequelize");
-// const mongoose = require("mongoose");
-const routes = require("./routes");
+const mongoose = require("mongoose");
+const routes = require("../routes");
 
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
