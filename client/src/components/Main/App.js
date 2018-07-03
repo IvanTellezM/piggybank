@@ -7,15 +7,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import { MailFolderListItems, otherMailFolderListItems } from './tileData';
+import InputAdornment from '../Input Form/inputForm';
 
 const drawerWidth = 240;
 
@@ -102,6 +101,8 @@ class PersistentDrawer extends React.Component {
   state = {
     open: false,
     anchor: 'left',
+    expenseReport: false,
+    addExpense: false
   };
 
   handleDrawerOpen = () => {
@@ -117,6 +118,24 @@ class PersistentDrawer extends React.Component {
       anchor: event.target.value,
     });
   };
+
+  addExpense = () => {
+    console.log("Clicked!");
+    this.setState({addExpense: true, expenseReport: false, calendar: false, resources: false})
+  }
+
+  expenseReport = () => {
+    this.setState({expenseReport: true, addExpense: false, calendar: false, resources: false})
+  }
+
+  calendar = () => {
+    this.setState({calendar: true, addExpense: false, expenseReport: false, resources: false})
+    
+  }
+
+  resources = () => {
+    console.log("Clicked!");
+  }
 
   render() {
     const { classes, theme } = this.props;
@@ -137,7 +156,15 @@ class PersistentDrawer extends React.Component {
           </IconButton>
         </div>
         <Divider />
-        <List>{mailFolderListItems}</List>
+        <List>
+          <MailFolderListItems
+            addExpense={this.addExpense}
+            calendar={this.calendar}
+            resources={this.resources}
+            expenseReport={this.expenseReport}
+          >
+          </MailFolderListItems>
+        </List>
         <Divider />
         <List>{otherMailFolderListItems}</List>
       </Drawer>
@@ -187,6 +214,7 @@ class PersistentDrawer extends React.Component {
           >
             <div className={classes.drawerHeader} />
             <Typography>{'Welcome! This is the first step to start learning how to manage your finances.'}</Typography>
+            {this.state.addExpense ? <InputAdornment /> : <div></div>}
           </main>
           {after}
         </div>
