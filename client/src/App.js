@@ -21,18 +21,6 @@ import Auth from './modules/Auth';
 // remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    Auth.isUserAuthenticated() ? (
-      <Component {...props} {...rest} />
-    ) : (
-      <Redirect to={{
-        pathname: '/',
-        state: { from: props.location }
-      }}/>
-    )
-  )}/>
-)
 
 const LoggedOutRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
