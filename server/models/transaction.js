@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL,
       allowNull: false
     },
-    time: {
+    date: {
       type: DataType.NOW
     }
   });
