@@ -16,6 +16,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { MailFolderListItems, otherMailFolderListItems } from './tileData';
 import InputAdornment from '../Input Form/inputForm';
 
+const FontAwesome = require('react-fontawesome');
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -199,8 +201,9 @@ class PersistentDrawer extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" align='center' style={{flex: 1}}>
-                Piggy Bank
+              <Typography variant="title" color="inherit"  style={{flex: 1}}> 
+                <FontAwesome name="piggy-bank" size="1.5x" style={{ marginRight: 10}} /> 
+                           Piggy Bank
               </Typography>
               <Button color="inherit" onClick={this.handleDrawerClose}>Login</Button>
             </Toolbar>
