@@ -20,20 +20,17 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@material-ui/icons": "^1.1.0",
-    "express": "^4.15.4",
-    "material-ui-icons": "^1.0.0-beta.36",
-=======
     "axios": "^0.16.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "material-ui": "^0.20.1",
+    "material-ui-icons": "^1.0.0-beta.36",
     "mongoose": "^5.1.7",
+    "mysql2": "^1.5.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
->>>>>>> master
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14"
