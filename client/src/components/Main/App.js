@@ -199,7 +199,7 @@ class PersistentDrawer extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" style={{flex: 1}}>
+              <Typography variant="title" color="inherit" align='center' style={{flex: 1}}>
                 Piggy Bank
               </Typography>
               <Button color="inherit" onClick={this.handleDrawerClose}>Login</Button>
@@ -213,7 +213,7 @@ class PersistentDrawer extends React.Component {
             })}
           >
             <div className={classes.drawerHeader} />
-            <Typography>{'Welcome! This is the first step to start learning how to manage your finances.'}</Typography>
+            <Typography align='center'>{'Welcome! This is the first step to start learning how to manage your finances.'}</Typography>
             {this.state.addExpense ? <InputAdornment /> : <div></div>}
           </main>
           {after}
