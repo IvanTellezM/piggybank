@@ -12,6 +12,9 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Button from '@material-ui/core/Button';
+import Badge from '@material-ui/core/Badge';
+import Icon from '@material-ui/core/Icon';
 
 const styles = theme => ({
   root: {
@@ -83,21 +86,30 @@ class InputAdornments extends React.Component {
     return (
       <div className={classes.root}>
         <TextField
-          label="With normal TextField"
-          id="simple-start-adornment"
+          // label="With normal TextField"
+          id="simple-start-adornment col-sm-3 center-xs start-md" 
           className={classNames(classes.margin, classes.textField)}
           InputProps={{
-            startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+            startAdornment: <InputAdornment position="start">Date</InputAdornment>,
           }}
         />
+        <TextField fullWidth className={classNames(classes.margin, classes.textField)}>
+          <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
+          <InputLabel
+            id="adornment-amount"
+            value={this.state.amount}
+            onChange={this.handleChange('amount')}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          />
+        </TextField>
         <TextField
           select
-          label="Expense Type"
+          // label="Expense Type"
           className={classNames(classes.margin, classes.textField)}
-          value={this.state.weightRange}
-          onChange={this.handleChange('weightRange')}
+          value={this.state.category}
+          onChange={this.handleChange('category')}
           InputProps={{
-            startAdornment: <InputAdornment position="start">Pick One</InputAdornment>,
+            startAdornment:<InputAdornment position="start">Category</InputAdornment>,
           }}
         >
           {ranges.map(option => (
@@ -107,49 +119,17 @@ class InputAdornments extends React.Component {
           ))}
         </TextField>
         <FormControl fullWidth className={classes.margin}>
-          <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
+          <InputLabel htmlFor="adornment-notes">Notes</InputLabel>
           <Input
-            id="adornment-amount"
-            value={this.state.amount}
-            onChange={this.handleChange('amount')}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            id="adornment-notes"
+            value={this.state.notes}
+            onChange={this.handleChange('notes')}
+            startAdornment={<InputAdornment position="start"></InputAdornment>}
           />
         </FormControl>
-        <FormControl
-          className={classNames(classes.margin, classes.withoutLabel, classes.textField)}
-          aria-describedby="weight-helper-text"
-        >
-          <Input
-            id="adornment-weight"
-            value={this.state.weight}
-            onChange={this.handleChange('weight')}
-            endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
-            inputProps={{
-              'aria-label': 'Weight',
-            }}
-          />
-          <FormHelperText id="weight-helper-text">Weight</FormHelperText>
-        </FormControl>
-        <FormControl className={classNames(classes.margin, classes.textField)}>
-          <InputLabel htmlFor="adornment-password">Password</InputLabel>
-          <Input
-            id="adornment-password"
-            type={this.state.showPassword ? 'text' : 'password'}
-            value={this.state.password}
-            onChange={this.handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="Toggle password visibility"
-                  onClick={this.handleClickShowPassword}
-                  onMouseDown={this.handleMouseDownPassword}
-                >
-                  {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
+        <Button variant="contained" color="secondary" className={classes.button}>
+         Submit
+      </Button>
       </div>
     );
   }
