@@ -27,7 +27,7 @@ class Chart extends Component {
         datasets: [
           {
             
-            data: [0,0,0,0,0,101,88,90,79,104,120,0],
+            data: [105,69,74,88,94,101,88,90,79,104,120,0],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',

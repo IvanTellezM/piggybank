@@ -2,19 +2,9 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { withStyles } from '@material-ui/core/styles';
+
 import "./login.css";
 
-const styles = {
-  card: {
-    width: 420,
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-  }
-
-};
 
 class Login extends Component {
   constructor(props) {
@@ -76,10 +66,11 @@ class Login extends Component {
             </Button>
           </form>
           </CardContent>
+          <p align='center' >Don't have an account? Click here to sign up</p>
         </Card>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(Login);
+export default Login;
