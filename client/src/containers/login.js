@@ -1,13 +1,25 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-// import FormControl from '@material-ui/core/FormControl';
-// import FormGroup from '@material-ui/core/FormGroup';
-// import Button from '@material-ui/core/Button';
-import "./Login.css";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import { withStyles } from '@material-ui/core/styles';
+import "./login.css";
 
-export default class Login extends Component {
+const styles = {
+  card: {
+    width: 420,
+  },
+  title: {
+    marginBottom: 16,
+    fontSize: 14,
+  }
+
+};
+
+class Login extends Component {
   constructor(props) {
     super(props);
+
 
     this.state = {
       email: "",
@@ -29,37 +41,45 @@ export default class Login extends Component {
     event.preventDefault();
   }
 
+
   render() {
     return (
       <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
-            <FormControl
-              autoFocus
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
+        <Card className="card">
+          <CardContent>
+          <h2 className="title">Log-in</h2>
+          <form onSubmit={this.handleSubmit}>
+            <FormGroup controlId="email" bsSize="large">
+              <ControlLabel>Email</ControlLabel>
+              <FormControl
+                autoFocus
+                type="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup controlId="password" bsSize="large">
+              <ControlLabel>Password</ControlLabel>
+              <FormControl
+                value={this.state.password}
+                onChange={this.handleChange}
+                type="password"
+              />
+            </FormGroup>
+            <Button
+              block
+              bsSize="large"
+              disabled={!this.validateForm()}
+              type="submit"
+            >
+              Login
+            </Button>
+          </form>
+          </CardContent>
+        </Card>
       </div>
     );
   }
 }
+
+export default withStyles(styles)(Login);

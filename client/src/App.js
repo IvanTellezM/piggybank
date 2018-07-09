@@ -16,6 +16,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { MailFolderListItems, otherMailFolderListItems } from './tileData';
 import InputAdornment from './components/Input Form/inputForm';
 import Chart from './components/expense/expenseChart';
+import Login from './containers/login';
 
 const FontAwesome = require('react-fontawesome');
 
@@ -160,7 +161,7 @@ class PersistentDrawer extends React.Component {
         </div>
         <Divider />
         <List>
-          <MailFolderListItems
+          <MailFolderListItems 
             addExpense={this.addExpense}
             calendar={this.calendar}
             resources={this.resources}
@@ -202,11 +203,11 @@ class PersistentDrawer extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit"  style={{flex: 1}}> 
-                <FontAwesome name="piggy-bank" size="1.5x" style={{ marginRight: 10}} /> 
+              <Typography variant="title" color="inherit"style={{flex: 1}}> 
+                <FontAwesome name="piggy-bank" size="1.5x"  style={{ marginRight: 10}} /> 
                            Piggy Bank
               </Typography>
-              <Button color="inherit" onClick={this.handleDrawerClose}>Login</Button>
+              <Button color="inherit" onClick={this.handleDrawerClose }  >Login</Button>
             </Toolbar>
           </AppBar>
           {before}
@@ -219,8 +220,9 @@ class PersistentDrawer extends React.Component {
           
             <div className={classes.drawerHeader} />
 
-            {this.state.addExpense ? <InputAdornment /> : <div></div>}
+            {this.state.addExpense ? <InputAdornment  /> : <div></div>}
             {this.state.expenseReport ? <Chart /> : <div></div>}
+            {this.state.calendar ? <Login /> : <div></div>}
 
           </main>
           
