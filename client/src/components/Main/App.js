@@ -15,6 +15,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { MailFolderListItems, otherMailFolderListItems } from './tileData';
 import InputAdornment from '../Input Form/inputForm';
+import expenseChart from '../expense/expenseChart';
 
 const FontAwesome = require('react-fontawesome');
 
@@ -216,8 +217,8 @@ class PersistentDrawer extends React.Component {
             })}
           >
             <div className={classes.drawerHeader} />
-            <Typography align='center'>{'Welcome! This is the first step to start learning how to manage your finances.'}</Typography>
             {this.state.addExpense ? <InputAdornment /> : <div></div>}
+            {this.state.expenseReport ? <expenseChart /> : <div></div>}
           </main>
           {after}
         </div>
