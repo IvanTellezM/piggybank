@@ -1,96 +1,242 @@
-import React, { Component } from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import routes from './routes.js';
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { MailFolderListItems, otherMailFolderListItems } from './tileData';
+import InputAdornment from './components/Input Form/inputForm';
+import Chart from './components/expense/expenseChart';
+import Login from './containers/login';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  // withRouter
-} from 'react-router-dom'
+const FontAwesome = require('react-fontawesome');
 
-import HomePage from './components/HomePage.jsx';
-import LoginPage from './containers/LoginPage.jsx';
-import LogoutFunction from './containers/LogoutFunction.jsx';
-import SignUpPage from './containers/SignUpPage.jsx';
-import Auth from './modules/Auth';
+const drawerWidth = 240;
 
-// remove tap delay, essential for MaterialUI to work properly
-injectTapEventPlugin();
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  appFrame: {
+    height: '100%',
+    zIndex: 1,
+    overflow: 'hidden',
+    position: 'relative',
+    display: 'flex',
+    width: '100%',
+  },
+  appBar: {
+    position: 'absolute',
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  'appBarShift-left': {
+    marginLeft: drawerWidth,
+  },
+  'appBarShift-right': {
+    marginRight: drawerWidth,
+  },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 20,
+  },
+  hide: {
+    display: 'none',
+  },
+  drawerPaper: {
+    position: 'relative',
+    width: drawerWidth,
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing.unit * 3,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  'content-left': {
+    marginLeft: -drawerWidth,
+  },
+  'content-right': {
+    marginRight: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  'contentShift-left': {
+    marginLeft: 0,
+  },
+  'contentShift-right': {
+    marginRight: 0,
+  },
+});
 
-
-const LoggedOutRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    Auth.isUserAuthenticated() ? (
-      <Redirect to={{
-        pathname: '/',
-        state: { from: props.location }
-      }}/>
-    ) : (
-      <Component {...props} {...rest} />
-    )
-  )}/>
-)
-
-const PropsRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    <Component {...props} {...rest} />
-  )}/>
-)
-
-class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      authenticated: false
-    }
+class PersistentDrawer extends React.Component {
+  state = {
+    open: false,
+    anchor: 'left',
+    expenseReport: false,
+    addExpense: false
   };
 
-  componentDidMount() {
-    // check if user is logged in on refresh
-    this.toggleAuthenticateStatus()
+  handleDrawerOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleChangeAnchor = event => {
+    this.setState({
+      anchor: event.target.value,
+    });
+  };
+
+  addExpense = () => {
+    console.log("Clicked!");
+    this.setState({addExpense: true, expenseReport: false, calendar: false, resources: false})
   }
 
-  toggleAuthenticateStatus() {
-    // check authenticated status and toggle state based on that
-    this.setState({ authenticated: Auth.isUserAuthenticated() })
+  expenseReport = () => {
+    this.setState({expenseReport: true, addExpense: false, calendar: false, resources: false})
+  }
+
+  calendar = () => {
+    this.setState({calendar: true, addExpense: false, expenseReport: false, resources: false})
+    
+  }
+
+  resources = () => {
+    console.log("Clicked!");
   }
 
   render() {
+    const { classes, theme } = this.props;
+    const { anchor, open } = this.state;
+
+    const drawer = (
+      <Drawer
+        variant="persistent"
+        anchor={anchor}
+        open={open}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={this.handleDrawerClose}>
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          <MailFolderListItems 
+            addExpense={this.addExpense}
+            calendar={this.calendar}
+            resources={this.resources}
+            expenseReport={this.expenseReport}
+          >
+          </MailFolderListItems>
+        </List>
+        <Divider />
+        <List>{otherMailFolderListItems}</List>
+      </Drawer>
+    );
+
+    let before = null;
+    let after = null;
+
+    if (anchor === 'left') {
+      before = drawer;
+    } else {
+      after = drawer;
+    }
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <Router>
-          <div>
-            <div className="top-bar">
-              <div className="top-bar-left">
-                <Link to="/">React App</Link>
-              </div>
-              {this.state.authenticated ? (
-                <div className="top-bar-right">
-                  <Link to="/logout">Log out</Link>
-                </div>
-              ) : (
-                <div className="top-bar-right">
-                  <Link to="/login">Log in</Link>
-                  <Link to="/signup">Sign up</Link>
-                </div>
-              )}
+      <div className={classes.root}>
+        {
 
-            </div>
+        }
+        <div className={classes.appFrame}>
+          <AppBar
+            className={classNames(classes.appBar, {
+              [classes.appBarShift]: open,
+              [classes[`appBarShift-${anchor}`]]: open,
+            })}
+          >
+            <Toolbar disableGutters={!open}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={this.handleDrawerOpen}
+                className={classNames(classes.menuButton, open && classes.hide)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="title" color="inherit"style={{flex: 1}}> 
+                <FontAwesome name="piggy-bank" size="1.5x"  style={{ marginRight: 10}} /> 
+                           Piggy Bank
+              </Typography>
+              <Button color="inherit" onClick={this.handleDrawerClose }  >Login</Button>
+            </Toolbar>
+          </AppBar>
+          {before}
+          <main
+            className={classNames(classes.content, classes[`content-${anchor}`], {
+              [classes.contentShift]: open,
+              [classes[`contentShift-${anchor}`]]: open,
+            })}
+          >
+          
+            <div className={classes.drawerHeader} />
 
-            <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />      
-            <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
-            <LoggedOutRoute path="/signup" component={SignUpPage}/>
-            <Route path="/logout" component={LogoutFunction}/>
-          </div>
+            {this.state.addExpense ? <InputAdornment  /> : <div></div>}
+            {this.state.expenseReport ? <Chart /> : <div></div>}
+            {this.state.calendar ? <Login /> : <div></div>}
 
-        </Router>
-      </MuiThemeProvider>
+          </main>
+          
+          {after}
+          
+        </div>
+      </div>
     );
   }
 }
 
-export default Main;
+PersistentDrawer.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles, { withTheme: true })(PersistentDrawer);

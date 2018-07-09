@@ -1,18 +1,18 @@
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    // Giving the Author model a name of type STRING
-    username: DataTypes.STRING,
-    password: DataTypes.INTEGER,
-    balance: DataTypes.INTEGER
-  });
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-  User.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
-    User.hasMany(models.Transaction, {
-      onDelete: "cascade"
-    });
-  };
+const userSchema = new Schema({
+  username: { type: String, required: true },
+  password: { type: String, required: true },
+  balance: Number,
+  transactions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Transaction"
+    }
+  ]
+});
 
-  return User;
-};
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
