@@ -17,6 +17,7 @@ import { MailFolderListItems, otherMailFolderListItems } from './tileData';
 import InputAdornment from './components/Input Form/inputForm';
 import Chart from './components/expense/expenseChart';
 import Login from './containers/login';
+import Resources from './components/resources';
 
 const FontAwesome = require('react-fontawesome');
 
@@ -139,6 +140,7 @@ class PersistentDrawer extends React.Component {
 
   resources = () => {
     console.log("Clicked!");
+    this.setState({calendar: false, addExpense: false, expenseReport: false, resources: true})
   }
 
   render() {
@@ -223,6 +225,7 @@ class PersistentDrawer extends React.Component {
             {this.state.addExpense ? <InputAdornment  /> : <div></div>}
             {this.state.expenseReport ? <Chart /> : <div></div>}
             {this.state.calendar ? <Login /> : <div></div>}
+            {this.state.resources ? <Resources /> : <div></div>}
 
           </main>
           
