@@ -1,26 +1,12 @@
-module.exports = function(sequelize, DataTypes) {
-  var Transaction = sequelize.define("Transaction", {
-    title: DataTypes.STRING,
-    category: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1]
-    },
-    amount: {
-      type: DataTypes.DECIMAL,
-      allowNull: false
-    }
-  });
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-  Transaction.associate = function(models) {
-    // We're saying that a Post should belong to an Author
-    // A Post can't be created without an Author due to the foreign key constraint
-    Transaction.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+const transactionSchema = new Schema({
+  title: { type: String, required: true },
+  category: { type: String, required: true },
+  amount: Number
+});
 
-  return Transaction;
-};
+const Transaction = mongoose.model("Transaction", transactionSchema);
+
+module.exports = Transaction;

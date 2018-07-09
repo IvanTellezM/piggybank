@@ -1,11 +1,12 @@
 
 const express = require("express");
 const path = require("path");
+const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const bodyParser = require('body-parser')
 const db = require('./models')
-
+const routes = require("./routes");
 
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
@@ -65,16 +66,12 @@ app.get("*", function(req, res) {
 
 
 // Routes
-
-// require("./server/routes/passport.js")(app);
-// require("./server/routes/passport.js")(app);
-// require("./server/routes/passport.js")(app);
+app.use(routes);
 
 // Port
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/piggybank");
 
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log(`🌎 ==> Server now on port ${PORT}!`);
-  });
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
