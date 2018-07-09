@@ -14,6 +14,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { MailFolderListItems, otherMailFolderListItems } from './tileData';
+import InputAdornment from './components/Input Form/inputForm';
+import Chart from './components/expense/expenseChart';
+
+const FontAwesome = require('react-fontawesome');
 
 const drawerWidth = 240;
 
@@ -22,7 +26,7 @@ const styles = theme => ({
     flexGrow: 1,
   },
   appFrame: {
-    height: 430,
+    height: '100%',
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -100,6 +104,8 @@ class PersistentDrawer extends React.Component {
   state = {
     open: false,
     anchor: 'left',
+    expenseReport: false,
+    addExpense: false
   };
 
   handleDrawerOpen = () => {
@@ -118,16 +124,20 @@ class PersistentDrawer extends React.Component {
 
   addExpense = () => {
     console.log("Clicked!");
-    // import InputAdornments at the top of the file
-    // in this function, render the inputadornments component
-    // do the same for all the other functions
+    this.setState({addExpense: true, expenseReport: false, calendar: false, resources: false})
   }
 
-  addExpense = () => {
+  expenseReport = () => {
+    this.setState({expenseReport: true, addExpense: false, calendar: false, resources: false})
+  }
+
+  calendar = () => {
+    this.setState({calendar: true, addExpense: false, expenseReport: false, resources: false})
+    
+  }
+
+  resources = () => {
     console.log("Clicked!");
-    // import InputAdornments at the top of the file
-    // in this function, render the inputadornments component
-    // do the same for all the other functions
   }
 
   render() {
@@ -152,6 +162,9 @@ class PersistentDrawer extends React.Component {
         <List>
           <MailFolderListItems
             addExpense={this.addExpense}
+            calendar={this.calendar}
+            resources={this.resources}
+            expenseReport={this.expenseReport}
           >
           </MailFolderListItems>
         </List>
@@ -189,8 +202,9 @@ class PersistentDrawer extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" style={{flex: 1}}>
-                Piggy Bank
+              <Typography variant="title" color="inherit"  style={{flex: 1}}> 
+                <FontAwesome name="piggy-bank" size="1.5x" style={{ marginRight: 10}} /> 
+                           Piggy Bank
               </Typography>
               <Button color="inherit" onClick={this.handleDrawerClose}>Login</Button>
             </Toolbar>
@@ -202,10 +216,16 @@ class PersistentDrawer extends React.Component {
               [classes[`contentShift-${anchor}`]]: open,
             })}
           >
+          
             <div className={classes.drawerHeader} />
-            <Typography>{'Welcome! This is the first step to start learning how to manage your finances.'}</Typography>
+
+            {this.state.addExpense ? <InputAdornment /> : <div></div>}
+            {this.state.expenseReport ? <Chart /> : <div></div>}
+
           </main>
+          
           {after}
+          
         </div>
       </div>
     );
