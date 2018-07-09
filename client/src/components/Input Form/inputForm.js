@@ -39,8 +39,20 @@ const ranges = [
     label: 'Food',
   },
   {
-    value: '51-100',
-    label: '51 to 100',
+    value: 'Groceries',
+    label: 'Groceries',
+  },
+  {
+    value: 'Transportation',
+    label: 'Transportation',
+  },
+  {
+    value: 'Utilities',
+    label: 'Utilities',
+  },
+  {
+    value: 'Other',
+    label: 'Other',
   },
 ];
 
