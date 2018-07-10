@@ -2,19 +2,15 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
-import Badge from '@material-ui/core/Badge';
-import Icon from '@material-ui/core/Icon';
+
+import API from "../../utils/API";
 
 const styles = theme => ({
   root: {
@@ -61,49 +57,89 @@ const ranges = [
 
 class InputAdornments extends React.Component {
   state = {
-    amount: '',
-    password: '',
-    weight: '',
-    weightRange: '',
-    showPassword: false,
+    transactions: [],
+    title: "",
+    category: "",
+    amount: "",
+    date:"",
+    note: "",
   };
 
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
+  // componentDidMount() {
+  //   this.loadTransactions();
+  // }
+
+  // loadTransactions = (id) => {
+  //   API.getAllTransactions()
+  //     .then(res =>
+  //       this.setState({ transactions: res.data, title: "", category: "", amount: "", note: "" })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   };
 
-  handleMouseDownPassword = event => {
+  handleFormSubmit = event => {
+    console.log("Hi!");
     event.preventDefault();
+ 
+      API.saveTransaction({
+        title: this.state.title,
+        
+      })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    
   };
-
-  handleClickShowPassword = () => {
-    this.setState(state => ({ showPassword: !state.showPassword }));
-  };
-
-  handleSubmit = (event) => {
-    // event.preventDefault();
-
-  } 
-
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
+        <FormControl fullWidth className={classes.margin}>
+          <TextField>
+          <InputLabel htmlFor="adornment-title">Name of the expense</InputLabel>
+          <Input
+            id="adornment-title"
+            value={this.state.title}
+            onChange={this.handleInputChange}
+            startAdornment={<InputAdornment position="start"></InputAdornment>}
+          />
+          </TextField>
+        </FormControl>
         <TextField
           // label="With normal TextField"
           id="simple-start-adornment col-sm-3 center-xs start-md" 
+          value={this.state.date}
           className={classNames(classes.margin, classes.textField)}
+          onChange={this.handleInputChange}
           InputProps={{
             startAdornment: <InputAdornment position="start">Date</InputAdornment>,
           }}
         />
+<<<<<<< HEAD
+=======
+        <TextField fullWidth className={classNames(classes.margin, classes.textField)}>
+          <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
+          <Input
+            id="adornment-amount"
+            value={this.state.amount}
+            onChange={this.handleInputChange}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          />
+        </TextField>
+>>>>>>> ec74001de4f717e3bb00382a575a4647737aa5aa
         <TextField
           select
           // label="Expense Type"
           className={classNames(classes.margin, classes.textField)}
           value={this.state.category}
-          onChange={this.handleChange('category')}
+          onChange={this.handleInputChange}
           InputProps={{
             startAdornment:<InputAdornment position="start">Category</InputAdornment>,
           }}
@@ -128,11 +164,18 @@ class InputAdornments extends React.Component {
           <Input
             id="adornment-notes"
             value={this.state.notes}
-            onChange={this.handleChange('notes')}
+            onChange={this.handleInputChange}
             startAdornment={<InputAdornment position="start"></InputAdornment>}
           />
         </FormControl>
+<<<<<<< HEAD
         <Button variant="contained" color="secondary" className={classes.button} onSubmit={this.handleSubmit()}>
+=======
+        <Button variant="contained" color="secondary" 
+          className={classes.button}
+          onClick={this.handleFormSubmit}
+        >
+>>>>>>> ec74001de4f717e3bb00382a575a4647737aa5aa
          Submit
       </Button>
       </div>
