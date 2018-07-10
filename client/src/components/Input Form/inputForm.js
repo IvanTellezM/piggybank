@@ -89,7 +89,8 @@ class InputAdornments extends React.Component {
     event.preventDefault();
  
       API.saveTransaction({
-        title: this.state.title
+        title: this.state.title,
+        
       })
         .then(res => console.log(res))
         .catch(err => console.log(err));
