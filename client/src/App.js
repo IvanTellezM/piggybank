@@ -107,7 +107,8 @@ class PersistentDrawer extends React.Component {
     open: false,
     anchor: 'left',
     expenseReport: false,
-    addExpense: false
+    addExpense: false,
+    login: false
   };
 
   handleDrawerOpen = () => {
@@ -126,21 +127,21 @@ class PersistentDrawer extends React.Component {
 
   addExpense = () => {
     console.log("Clicked!");
-    this.setState({addExpense: true, expenseReport: false, calendar: false, resources: false})
+    this.setState({addExpense: true, expenseReport: false, login: false, resources: false})
   }
 
   expenseReport = () => {
-    this.setState({expenseReport: true, addExpense: false, calendar: false, resources: false})
+    this.setState({expenseReport: true, addExpense: false, login: false, resources: false})
   }
 
-  calendar = () => {
-    this.setState({calendar: true, addExpense: false, expenseReport: false, resources: false})
+  login = () => {
+    this.setState({login: true, addExpense: false, expenseReport: false, resources: false})
     
   }
 
   resources = () => {
     console.log("Clicked!");
-    this.setState({calendar: false, addExpense: false, expenseReport: false, resources: true})
+    this.setState({login: false, addExpense: false, expenseReport: false, resources: true})
   }
 
   render() {
@@ -165,7 +166,6 @@ class PersistentDrawer extends React.Component {
         <List>
           <MailFolderListItems 
             addExpense={this.addExpense}
-            calendar={this.calendar}
             resources={this.resources}
             expenseReport={this.expenseReport}
           >
@@ -209,7 +209,7 @@ class PersistentDrawer extends React.Component {
                 <FontAwesome name="piggy-bank" size="1.5x"  style={{ marginRight: 10}} /> 
                            Piggy Bank
               </Typography>
-              <Button color="inherit" onClick={this.handleDrawerClose }  >Login</Button>
+              <Button color="inherit" onClick={this.login}  >Login</Button>
             </Toolbar>
           </AppBar>
           {before}
@@ -224,7 +224,7 @@ class PersistentDrawer extends React.Component {
 
             {this.state.addExpense ? <InputAdornment  /> : <div></div>}
             {this.state.expenseReport ? <Chart /> : <div></div>}
-            {this.state.calendar ? <Login /> : <div></div>}
+            {this.state.login ? <Login /> : <div></div>}
             {this.state.resources ? <Resources /> : <div></div>}
 
           </main>

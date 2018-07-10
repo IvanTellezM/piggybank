@@ -80,6 +80,11 @@ class InputAdornments extends React.Component {
     this.setState(state => ({ showPassword: !state.showPassword }));
   };
 
+  handleSubmit = (event) => {
+    // event.preventDefault();
+
+  } 
+
   render() {
     const { classes } = this.props;
 
@@ -127,7 +132,7 @@ class InputAdornments extends React.Component {
             startAdornment={<InputAdornment position="start"></InputAdornment>}
           />
         </FormControl>
-        <Button variant="contained" color="secondary" className={classes.button}>
+        <Button variant="contained" color="secondary" className={classes.button} onSubmit={this.handleSubmit()}>
          Submit
       </Button>
       </div>

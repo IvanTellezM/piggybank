@@ -37,7 +37,8 @@ class Login extends Component {
       <div className="Login">
         <Card className="card">
           <CardContent>
-          <h2 className="title">Log-in</h2>
+          <h2 className="title">Welcome Back!</h2>
+          <h2 className="title">Please Login.</h2>
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="email" bsSize="large">
               <ControlLabel>Email</ControlLabel>

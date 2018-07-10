@@ -23,12 +23,6 @@ export const MailFolderListItems = (props) => {
         </ListItemIcon>
         <ListItemText primary="Expense Report" />
       </ListItem>
-      <ListItem button onClick={() => props.calendar()}>
-        <ListItemIcon>
-          <Event />
-        </ListItemIcon>
-        <ListItemText primary="Calendar" />
-      </ListItem>
       <ListItem button onClick={() => props.resources()}>
         <ListItemIcon>
           <LocalLibrary />
