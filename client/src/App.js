@@ -17,6 +17,7 @@ import { MailFolderListItems, otherMailFolderListItems } from './tileData';
 import InputAdornment from './components/Input Form/inputForm';
 import Chart from './components/expense/expenseChart';
 import Login from './containers/login';
+import Home from './components/home/home';
 
 const FontAwesome = require('react-fontawesome');
 
@@ -106,7 +107,8 @@ class PersistentDrawer extends React.Component {
     open: false,
     anchor: 'left',
     expenseReport: false,
-    addExpense: false
+    addExpense: false,
+    home: true,
   };
 
   handleDrawerOpen = () => {
@@ -125,15 +127,15 @@ class PersistentDrawer extends React.Component {
 
   addExpense = () => {
     console.log("Clicked!");
-    this.setState({addExpense: true, expenseReport: false, calendar: false, resources: false})
+    this.setState({home: false, addExpense: true, expenseReport: false, calendar: false, resources: false})
   }
 
   expenseReport = () => {
-    this.setState({expenseReport: true, addExpense: false, calendar: false, resources: false})
+    this.setState({home: false, expenseReport: true, addExpense: false, calendar: false, resources: false})
   }
 
   calendar = () => {
-    this.setState({calendar: true, addExpense: false, expenseReport: false, resources: false})
+    this.setState({home: false, calendar: true, addExpense: false, expenseReport: false, resources: false})
     
   }
 
@@ -219,7 +221,7 @@ class PersistentDrawer extends React.Component {
           >
           
             <div className={classes.drawerHeader} />
-
+            {this.state.home ? <Home  /> : <div></div>}
             {this.state.addExpense ? <InputAdornment  /> : <div></div>}
             {this.state.expenseReport ? <Chart /> : <div></div>}
             {this.state.calendar ? <Login /> : <div></div>}

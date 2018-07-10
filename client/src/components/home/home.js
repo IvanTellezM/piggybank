@@ -1,34 +1,91 @@
 import React from 'react';
-import Layout from '@material-ui/core/Layout'
-import {Navlink} from "react-router-dom";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-const Home =() =>{
-  return(
+const styles = {
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+};
+
+function SimpleMediaCard(props) {
+  const { classes } = props;
+  return (
     <div>
-    <p align='center' >Manage your personal finance and achieve your financial goals.
-        Keep track of every penny with in-depth report. Plan and save for your next goal in life!</p>
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/contemplative-reptile.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            Piggy Bank
+          </Typography>
+          <Typography component="p">
+          Manage your personal finance and achieve your financial goals.
+          Keep track of every penny with in depth report. Plan and save for your next goal in life.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </CardActions>
+      </Card>
+
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/contemplative-reptile.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            Piggy Bank
+          </Typography>
+          <Typography component="p">
+          Manage your personal finance and achieve your financial goals.
+          Keep track of every penny with in depth report. Plan and save for your next goal in life.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </CardActions>
+      </Card>
     </div>
-  )
+
+    
+  );
 }
-      <div style={{height: '300px', position: 'relative'}}>
-          <Layout style={{background: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuiIl6GYrBCMJOnSYtp80-wMWvB8ZcUUSF4OTyfLVwmvo2Ugna) center / cover'}}>
-              <Header transparent title="Piggy Bank" style={{color: 'white'}}>
-                  <Navigation>
-                      <a href="#">Home</a>
-                      <a href="#">Sign In</a>    
-                  </Navigation>
-              </Header>
-              <Drawer Piggy="Title">
-                  <Navigation>
-                      <a href="#">Add Expense</a>
-                      <a href="#">Expense</a>
-                      <a href="#">Calendar</a>
-                      <a href="#">Resource</a>
-                  </Navigation>
-              </Drawer>
-              <Content />
-          </Layout>
-</div>
+
+SimpleMediaCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(SimpleMediaCard);
 
 
-export default Home;
+
+
+
+
+
