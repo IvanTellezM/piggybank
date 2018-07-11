@@ -72,18 +72,18 @@ class InputAdornments extends Component {
     note: "",
   };
 
-  componentDidMount() {
-    // this.loadTransactions();
-  }
+  // componentDidMount() {
+  //   this.loadTransactions();
+  // }
 
-  loadTransactions = () => {
-    API.getAllTransactions()
-      .then(res => 
-        console.log(res.data)
-      )
-      .catch(err => console.log(err))
-      console.log(this.state.transactions)
-  };
+  // loadTransactions = () => {
+  //   API.getAllTransactions()
+  //     .then(res => 
+  //       console.log(res.data)
+  //     )
+  //     .catch(err => console.log(err))
+  //     console.log(this.state.transactions)
+  // };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -105,7 +105,9 @@ class InputAdornments extends Component {
         note: this.state.note
         
       })
-        .then(res => console.log(res))
+        .then(res => console.log(res),
+         alert("Saved!"))
+        
         .catch(err => console.log(err));
   };
 
@@ -171,7 +173,6 @@ class InputAdornments extends Component {
             <FormControl fullWidth className={classes.formControl}>
               <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
               <Input
-                id="adornment-amount"
                 value={this.state.amount}
                 name="amount"
                 onChange={this.handleInputChange}
@@ -181,7 +182,6 @@ class InputAdornments extends Component {
             <FormControl fullWidth className={classes.formControl}>
               <InputLabel htmlFor="adornment-note">Note</InputLabel>
               <Input
-                id="adornment-note"
                 value={this.state.note}
                 name="note"
                 onChange={this.handleInputChange}
