@@ -76,7 +76,7 @@ function SimpleMediaCard(props) {
             <Typography gutterBottom variant="headline" component="h1" style={{ textAlign: 'center' }} variant="display2">
 
             Manage your personal finance and achieve your financial goals. 
-            Keep track of every penny with in depth report. 
+            Keep track of every penny with in-depth reporting. 
             Plan and save for your next goal in life.
 
             </Typography>
