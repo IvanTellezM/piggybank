@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -9,6 +9,8 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import API from "../../utils/API";
 
@@ -17,7 +19,7 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
   },
-  margin: {
+  formControl: {
     margin: theme.spacing.unit,
   },
   withoutLabel: {
@@ -26,6 +28,11 @@ const styles = theme => ({
   textField: {
     flexBasis: 200,
   },
+  card: {
+    width: "90%",
+    marginTop: 50,
+    marginLeft: 65,
+  }
 });
 
 const ranges = [
@@ -55,10 +62,10 @@ const ranges = [
   },
 ];
 
-class InputAdornments extends React.Component {
+class InputAdornments extends Component {
   state = {
     transactions: [],
-    title: "",
+    name: "",
     category: "",
     amount: "",
     date:"",
@@ -69,10 +76,10 @@ class InputAdornments extends React.Component {
   //   this.loadTransactions();
   // }
 
-  // loadTransactions = (id) => {
-  //   API.getAllTransactions()
+  // loadTransactions = () => {
+  //   API.getTransactions()
   //     .then(res =>
-  //       this.setState({ transactions: res.data, title: "", category: "", amount: "", note: "" })
+  //       this.setState({ transactions: res.data, title: "", date: "", category: "", amount: "", notes: "" })
   //     )
   //     .catch(err => console.log(err));
   // };
@@ -90,6 +97,10 @@ class InputAdornments extends React.Component {
  
       API.saveTransaction({
         title: this.state.title,
+        category: this.state.category,
+        amount: this.state.amount,
+        date: this.state.date,
+        note: this.state.note
         
       })
         .then(res => console.log(res))
@@ -101,6 +112,7 @@ class InputAdornments extends React.Component {
 
     return (
       <div className={classes.root}>
+<<<<<<< HEAD
         <FormControl fullWidth className={classes.margin}>
           <TextField>
           <InputLabel htmlFor="adornment-title">Name of the expense</InputLabel>
@@ -171,6 +183,90 @@ class InputAdornments extends React.Component {
         >
          Submit
       </Button>
+=======
+        <Card className={classes.card}>
+        <h1 align='center' >Add a Transaction</h1>
+          <CardContent>
+          <FormControl fullWidth className={classes.formControl}>
+            <InputLabel>Name of the Expense</InputLabel>
+            <Input
+              value={this.state.title}
+              name="title"
+              onChange={this.handleInputChange}
+              startAdornment={<InputAdornment position="start"></InputAdornment>}
+            />
+            </FormControl>
+            <FormControl>
+              <InputLabel>Date</InputLabel>
+              <Input
+                // label="With normal TextField"
+                
+                id="simple-start-adornment col-sm-3 center-xs start-md" 
+                value={this.state.date}
+                name="date"
+                // className={classNames(classes.formControl)}
+                onChange={this.handleInputChange}
+
+                startAdornment= {<InputAdornment position="start"></InputAdornment>}
+
+              />
+            </FormControl>  
+            {/* <TextField fullWidth className={classNames(classes.formControl, classes.textField)}>
+              <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
+              <Input
+                id="adornment-amount"
+                value={this.state.amount}
+                onChange={this.handleInputChange}
+                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+              />
+            </TextField> */}
+            <TextField
+              select
+              // label="Expense Type"
+              className={classNames(classes.formControl, classes.textField)}
+              value={this.state.category}
+              name="category"
+              onChange={this.handleInputChange}
+              InputProps={{
+                startAdornment:<InputAdornment position="start">Category</InputAdornment>,
+              }}
+            >
+              {ranges.map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <FormControl fullWidth className={classes.formControl}>
+              <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
+              <Input
+                id="adornment-amount"
+                value={this.state.amount}
+                name="amount"
+                onChange={this.handleInputChange}
+                startAdornment={<InputAdornment position="start"></InputAdornment>}
+              />
+            </FormControl>
+            <FormControl fullWidth className={classes.formControl}>
+              <InputLabel htmlFor="adornment-note">Note</InputLabel>
+              <Input
+                id="adornment-note"
+                value={this.state.note}
+                name="note"
+                onChange={this.handleInputChange}
+                startAdornment={<InputAdornment position="start"></InputAdornment>}
+              />
+            </FormControl>
+            <Button variant="contained" color="secondary" 
+              className={classes.button}
+              onClick={this.handleFormSubmit}
+              
+            >
+            Submit
+          </Button>
+        </CardContent>
+        </Card>
+>>>>>>> 23410871bda7f8670c3cb813cdc4e3a1515649bb
       </div>
     );
   }

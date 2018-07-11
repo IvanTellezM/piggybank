@@ -6,11 +6,16 @@
   "scripts": {
     "server": "node server.js",
     "client": "cd client && npm run start",
+<<<<<<< HEAD
     "start": "./node_modules/.bin/concurrently \"./node_modules/.bin/nodemon\" \"npm run client\" \"react-scripts start\"",
+=======
+    "start":  "./node_modules/.bin/concurrently \"npm run server\" \"npm run client\"",
+>>>>>>> 23410871bda7f8670c3cb813cdc4e3a1515649bb
     "build": "cd client && npm run build\"react-scripts build\"",
     "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master",
     "test": "echo \"Error: no test specified\" && exit 1\"react-scripts test --env=jsdom\"",
-    "installDeps": "yarn && cd client && yarn",
+    "installDeps": "yarn && cd client",
+    "seed": "node scripts/seedDB.js",
     "eject": "react-scripts eject"
   },
   "author": "",
