@@ -112,78 +112,6 @@ class InputAdornments extends Component {
 
     return (
       <div className={classes.root}>
-<<<<<<< HEAD
-        <FormControl fullWidth className={classes.margin}>
-          <TextField>
-          <InputLabel htmlFor="adornment-title">Name of the expense</InputLabel>
-          <Input
-            id="adornment-title"
-            value={this.state.title}
-            onChange={this.handleInputChange}
-            startAdornment={<InputAdornment position="start"></InputAdornment>}
-          />
-          </TextField>
-        </FormControl>
-        <TextField
-          // label="With normal TextField"
-          id="simple-start-adornment col-sm-3 center-xs start-md" 
-          value={this.state.date}
-          className={classNames(classes.margin, classes.textField)}
-          onChange={this.handleInputChange}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">Date</InputAdornment>,
-          }}
-        />
-        <TextField fullWidth className={classNames(classes.margin, classes.textField)}>
-          <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
-          <Input
-            id="adornment-amount"
-            value={this.state.amount}
-            onChange={this.handleInputChange}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          />
-        </TextField>
-        <TextField
-          select
-          // label="Expense Type"
-          className={classNames(classes.margin, classes.textField)}
-          value={this.state.category}
-          onChange={this.handleInputChange}
-          InputProps={{
-            startAdornment:<InputAdornment position="start">Category</InputAdornment>,
-          }}
-        >
-          {ranges.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <FormControl fullWidth className={classes.margin}>
-          <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
-          <Input
-            id="adornment-amount"
-            value={this.state.amount}
-            onChange={this.handleChange('amount')}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          />
-        </FormControl>
-        <FormControl fullWidth className={classes.margin}>
-          <InputLabel htmlFor="adornment-notes">Notes</InputLabel>
-          <Input
-            id="adornment-notes"
-            value={this.state.notes}
-            onChange={this.handleInputChange}
-            startAdornment={<InputAdornment position="start"></InputAdornment>}
-          />
-        </FormControl>
-        <Button variant="contained" color="secondary" 
-          className={classes.button}
-          onClick={this.handleFormSubmit}
-        >
-         Submit
-      </Button>
-=======
         <Card className={classes.card}>
         <h1 align='center' >Add a Transaction</h1>
           <CardContent>
@@ -266,7 +194,6 @@ class InputAdornments extends Component {
           </Button>
         </CardContent>
         </Card>
->>>>>>> 23410871bda7f8670c3cb813cdc4e3a1515649bb
       </div>
     );
   }

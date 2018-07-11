@@ -12,8 +12,8 @@ const Dashboard = ({ secretData, user }) => (
   </Card>
 );
 
-Dashboard.propTypes = {
-  secretData: PropTypes.string.isRequired
-};
+// Dashboard.propTypes = {
+//   secretData: PropTypes.string.isRequired
+// };
 
 export default Dashboard;

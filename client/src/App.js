@@ -1,16 +1,4 @@
-import React, { Component } from 'react'; //I.T. 
-import injectTapEventPlugin from 'react-tap-event-plugin';  //I.T. 
-import getMuiTheme from 'material-ui/styles/getMuiTheme';  //I.T. 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'; //I. T. 
-import { BrowserRouter as Router,Route,Link } from 'react-router-dom' //I.T. 
-import HomePage from './components/HomePage.jsx';
-import { PrivateRoute, PropsRoute, LoggedOutRoute } from './components/Routes';  //I. T. 
-import LoginPage from './pages/LoginPage.jsx';  //I. T
-import LogoutFunction from './pages/LogoutFunction.jsx';
-import SignUpPage from './pages/SignUpPage.jsx';
-import DashboardPage from './pages/DashboardPage.jsx'; //I. T. 
-import Auth from './utils/Auth';  //I.T. 
-
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -32,9 +20,6 @@ import Login from './containers/login';
 import Resources from './components/resources';
 
 const FontAwesome = require('react-fontawesome');
-
-// remove tap delay, essential for MaterialUI to work properly  I. T. 
-injectTapEventPlugin();
 
 const drawerWidth = 240;
 
@@ -119,23 +104,12 @@ const styles = theme => ({
 
 class PersistentDrawer extends React.Component {
   state = {
-    authenticated: false  //I.T
-    // open: false,
-    // anchor: 'left',
-    // expenseReport: false,
-    // addExpense: false,
-    // login: false
+    open: false,
+    anchor: 'left',
+    expenseReport: false,
+    addExpense: false,
+    login: false
   };
-
-  componentDidMount() {
-    // check if user is logged in on refresh  I. T
-    this.toggleAuthenticateStatus()
-  }
-
-  toggleAuthenticateStatus = () => {
-    // check authenticated status and toggle state based on that  I. T 
-    this.setState({ authenticated: Auth.isUserAuthenticated() })
-  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -169,9 +143,6 @@ class PersistentDrawer extends React.Component {
     console.log("Clicked!");
     this.setState({login: false, addExpense: false, expenseReport: false, resources: true})
   }
-  
-
-  
 
   render() {
     const { classes, theme } = this.props;
@@ -238,30 +209,7 @@ class PersistentDrawer extends React.Component {
                 <FontAwesome name="piggy-bank" size="1.5x"  style={{ marginRight: 10}} /> 
                            Piggy Bank
               </Typography>
-
-
-
-              {/*               
-              <Button color="inherit" onClick={this.login}  >Log in</Button>
-              <Button color="inherit" onClick={this.login}  >Sign Up</Button> */}
-
-               {this.state.authenticated ? (
-                <div className="top-bar-right">
-                  <Link to="/dashboard">Dashboard</Link>
-                  <Link to="/logout">Log out</Link>
-                </div>
-              ) : (
-                <div className="top-bar-right">
-                  <Link to="/login">Log in</Link>
-                  <Link to="/signup">Sign up</Link>
-                </div>
-              )}
-              <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} />
-            <PrivateRoute path="/dashboard" component={DashboardPage}/>
-            <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} />
-            <LoggedOutRoute path="/signup" component={SignUpPage}/>
-            <Route path="/logout" component={LogoutFunction}/>
-
+              <Button color="inherit" onClick={this.login}  >Login</Button>
             </Toolbar>
           </AppBar>
           {before}
@@ -295,3 +243,4 @@ PersistentDrawer.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawer);
+
