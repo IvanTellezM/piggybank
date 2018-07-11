@@ -92,7 +92,7 @@ class InputAdornments extends Component {
   };
 
   handleFormSubmit = event => {
-    console.log("Hi!");
+    console.log("Submitting from front");
     event.preventDefault();
  
       API.saveTransaction({

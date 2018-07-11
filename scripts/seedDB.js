@@ -5,17 +5,10 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/expenses"
+  "mongodb://localhost/piggybank"
 );
 
-const expensesSeed = [
-  {
-    title: { type: String, required: true },
-    category: { type: String, required: true },
-    date: {type: Date, default: Date.now},
-    amount: Number,
-    note: String
-  },
+const TransactionSeeds = [
   {
     title: "Ivan",
     category: "Entertainment",
@@ -123,9 +116,9 @@ const expensesSeed = [
   }
 ];
 
-db.expenses
+db.Transaction
   .remove({})
-  .then(() => db.expenses.collection.insertMany(expensesSeed))
+  .then(() => db.Transaction.collection.insertMany(TransactionSeeds))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
