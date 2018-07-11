@@ -72,17 +72,17 @@ class InputAdornments extends Component {
     note: "",
   };
 
-  // componentDidMount() {
-  //   this.loadTransactions();
-  // }
+  componentDidMount() {
+    this.loadTransactions();
+  }
 
-  // loadTransactions = () => {
-  //   API.getTransactions()
-  //     .then(res =>
-  //       this.setState({ transactions: res.data, title: "", date: "", category: "", amount: "", notes: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
+  loadTransactions = () => {
+    API.getTransactions()
+      .then(res =>
+        this.setState({ transactions: res.data, title: "", date: "", category: "", amount: "", notes: "" })
+      )
+      .catch(err => console.log(err));
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+
 import "./login.css";
 
 
@@ -35,9 +35,10 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="Login">
-        <Card className="card">
+        <Card className="container">
+        
           <CardContent>
-          <h2 className="title">Welcome!</h2>
+          <h2 className="title">Welcome Back!</h2>
           <h2 className="title">Please Login.</h2>
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="email" bsSize="large">
@@ -67,11 +68,10 @@ class LoginForm extends Component {
             </Button>
           </form>
           </CardContent>
-          <CardText>Don't have an account, Sign Up? <Link to={'/signup'}>Create one</Link>.</CardText>
+          <p align='center' >Don't have an account? Click here to sign up</p>
         </Card>
       </div>
     );
   }
-
-
+}
 export default LoginForm;
