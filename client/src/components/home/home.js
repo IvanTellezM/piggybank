@@ -17,7 +17,8 @@ const styles = {
     height: 600,
     maxWidth: 600,
     display: "inlineblock", 
-    marginBottom: 20
+    marginBottom: 20,
+    
   },
   card1: {
     height:600,
@@ -27,8 +28,9 @@ const styles = {
     marginBottom: 100
   },
   media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+    height: 600,
+    width: 600,
+    paddingTop: '1', // 16:9
   },
 };
 
@@ -41,22 +43,15 @@ function SimpleMediaCard(props) {
           <Card className={classes.card1} >
           <CardMedia
               className={classes.media}
-              // image={require('./src/articlePics/cash.jpg')}
+              image={require('../../articlePics/box.jpg')}
               title="Piggy Bank"
             />
             <CardContent>
               <Typography gutterBottom variant="headline" component="h2">
-              Manage your personal finance and achieve your financial goals. Keep track of every penny with in depth report. Plan and save for your next goal in life.
-              Manage your personal finance and achieve your financial goals. Keep track of every penny with in depth report. Plan and save for your next goal in life.
-              Manage your personal finance and achieve your financial goals. Keep track of every penny with in depth report. Plan and save for your next goal in life.
-              Manage your personal finance and achieve your financial goals. Keep track of every penny with in depth report. Plan and save for your next goal in life.
-              Manage your personal finance and achieve your financial goals. Keep track of every penny with in depth report. Plan and save for your next goal in life.
-              Manage your personal finance and achieve your financial goals. Keep track of every penny with in depth report. Plan and save for your next goal in life.
-              Manage your personal finance and achieve your financial goals. Keep track of every penny with in depth report. Plan and save for your next goal in life.
-              Manage your personal finance and achieve your financial goals. Keep track of every penny with in depth report. Plan and save for your next goal in life.
+              
               </Typography>
               <Typography component="p">
-              {/* Saving money as a teenager is hard, when you have friends buying new clothes and going on weekend trips. But it’s not impossible. Here’s how teens can save. */}
+             
               </Typography>
             </CardContent>
             <CardActions>
@@ -67,22 +62,27 @@ function SimpleMediaCard(props) {
 
         <Grid item xs={6}>
           <Card className={classes.card}>
-            <CardMedia
+            {/* <CardMedia
               className={classes.media}
               // image={require("../articlePics/article2.jpg")}
               title="Contemplative Reptile"
-            />
+            /> */}
           
  
           <CardContent>
-            <Typography gutterBottom variant="headline" component="h1">
+            <Typography variant="headline" component="h2"style={{ textAlign: 'center' }}>
+            Welcome to your PiggyBank!
+            </Typography>
+            <Typography gutterBottom variant="headline" component="h1" style={{ textAlign: 'center' }} variant="display2">
+
             Manage your personal finance and achieve your financial goals. 
             Keep track of every penny with in depth report. 
             Plan and save for your next goal in life.
+
             </Typography>
-            <Typography variant="headline" component="h2">
-            Welcome to your PiggyBank!
-            </Typography>
+            
+            
+            
           </CardContent>
           <CardActions>
             

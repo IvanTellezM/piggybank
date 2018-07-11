@@ -17,12 +17,8 @@ import { MailFolderListItems, otherMailFolderListItems } from './tileData';
 import InputAdornment from './components/Input Form/inputForm';
 import Chart from './components/expense/expenseChart';
 import Login from './containers/login';
-<<<<<<< HEAD
 import Home from './components/home/home';
-=======
 import Resources from './components/resources';
->>>>>>> e7e260d6722fc717d81029cb35f94bcf95c669fb
-
 const FontAwesome = require('react-fontawesome');
 
 const drawerWidth = 240;
@@ -112,11 +108,8 @@ class PersistentDrawer extends React.Component {
     anchor: 'left',
     expenseReport: false,
     addExpense: false,
-<<<<<<< HEAD
-    home: true,
-=======
-    login: false
->>>>>>> e7e260d6722fc717d81029cb35f94bcf95c669fb
+    login: false,
+    home : true
   };
 
   handleDrawerOpen = () => {
@@ -135,7 +128,6 @@ class PersistentDrawer extends React.Component {
 
   addExpense = () => {
     console.log("Clicked!");
-<<<<<<< HEAD
     this.setState({home: false, addExpense: true, expenseReport: false, calendar: false, resources: false})
   }
 
@@ -145,17 +137,6 @@ class PersistentDrawer extends React.Component {
 
   calendar = () => {
     this.setState({home: false, calendar: true, addExpense: false, expenseReport: false, resources: false})
-=======
-    this.setState({addExpense: true, expenseReport: false, login: false, resources: false})
-  }
-
-  expenseReport = () => {
-    this.setState({expenseReport: true, addExpense: false, login: false, resources: false})
-  }
-
-  login = () => {
-    this.setState({login: true, addExpense: false, expenseReport: false, resources: false})
->>>>>>> e7e260d6722fc717d81029cb35f94bcf95c669fb
     
   }
 
@@ -246,7 +227,7 @@ class PersistentDrawer extends React.Component {
             {this.state.expenseReport ? <Chart /> : <div></div>}
             {this.state.login ? <Login /> : <div></div>}
             {this.state.resources ? <Resources /> : <div></div>}
-
+            
           </main>
           
           {after}
