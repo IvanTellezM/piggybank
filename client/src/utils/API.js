@@ -8,11 +8,12 @@ export default {
     return axios.get("/api/users/" + id);
   },
   getAllTransactions: function() {
-    return axios.get("/api/transactions");
+    console.log("Front End Chicken!!")
+    return axios.get("/api/transactions")
   },
-  getTransaction: function(id) {
-    return axios.get("/api/transactions/" + id);
-  },
+  // getTransaction: function(id) {
+  //   return axios.get("/api/transactions/" + id);
+  // },
   saveTransaction: function(transactionData) {
     console.log("saving");
     return axios.post("/api/transactions", transactionData)
