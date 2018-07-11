@@ -128,15 +128,15 @@ class PersistentDrawer extends React.Component {
 
   addExpense = () => {
     console.log("Clicked!");
-    this.setState({home: false, addExpense: true, expenseReport: false, calendar: false, resources: false})
+    this.setState({home: false, addExpense: true, expenseReport: false, login: false, resources: false})
   }
 
   expenseReport = () => {
-    this.setState({home: false, expenseReport: true, addExpense: false, calendar: false, resources: false})
+    this.setState({home: false, expenseReport: true, addExpense: false, login: false, resources: false})
   }
 
-  calendar = () => {
-    this.setState({home: false, calendar: true, addExpense: false, expenseReport: false, resources: false})
+  login = () => {
+    this.setState({home: false, login: true, addExpense: false, expenseReport: false, resources: false})
     
   }
 
