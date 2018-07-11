@@ -122,8 +122,6 @@ class InputAdornments extends React.Component {
             startAdornment: <InputAdornment position="start">Date</InputAdornment>,
           }}
         />
-<<<<<<< HEAD
-=======
         <TextField fullWidth className={classNames(classes.margin, classes.textField)}>
           <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
           <Input
@@ -133,7 +131,6 @@ class InputAdornments extends React.Component {
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
         </TextField>
->>>>>>> ec74001de4f717e3bb00382a575a4647737aa5aa
         <TextField
           select
           // label="Expense Type"
@@ -168,14 +165,10 @@ class InputAdornments extends React.Component {
             startAdornment={<InputAdornment position="start"></InputAdornment>}
           />
         </FormControl>
-<<<<<<< HEAD
-        <Button variant="contained" color="secondary" className={classes.button} onSubmit={this.handleSubmit()}>
-=======
         <Button variant="contained" color="secondary" 
           className={classes.button}
           onClick={this.handleFormSubmit}
         >
->>>>>>> ec74001de4f717e3bb00382a575a4647737aa5aa
          Submit
       </Button>
       </div>
