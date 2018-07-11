@@ -4,7 +4,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AddCircle from '@material-ui/icons/AddCircle'
 import Assessment from '@material-ui/icons/Assessment'
-import Event from '@material-ui/icons/Event'
 import StarIcon from '@material-ui/icons/Star';
 import LocalLibrary from '@material-ui/icons/LocalLibrary';
 
@@ -22,12 +21,6 @@ export const MailFolderListItems = (props) => {
           <Assessment />
         </ListItemIcon>
         <ListItemText primary="Expense Report" />
-      </ListItem>
-      <ListItem button onClick={() => props.calendar()}>
-        <ListItemIcon>
-          <Event />
-        </ListItemIcon>
-        <ListItemText primary="Calendar" />
       </ListItem>
       <ListItem button onClick={() => props.resources()}>
         <ListItemIcon>

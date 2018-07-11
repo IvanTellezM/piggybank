@@ -14,14 +14,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { MailFolderListItems, otherMailFolderListItems } from './tileData';
-import InputAdornment from './components/Input Form/inputForm';
-import Chart from './components/expense/expenseChart';
-import Login from './containers/login';
-<<<<<<< HEAD
-import Home from './components/home/home';
-=======
-import Resources from './components/resources';
->>>>>>> e7e260d6722fc717d81029cb35f94bcf95c669fb
+import InputAdornment from '../Input Form/inputForm';
+import expenseChart from '../expense/expenseChart';
 
 const FontAwesome = require('react-fontawesome');
 
@@ -32,7 +26,7 @@ const styles = theme => ({
     flexGrow: 1,
   },
   appFrame: {
-    height: '100%',
+    height: 430,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -111,12 +105,7 @@ class PersistentDrawer extends React.Component {
     open: false,
     anchor: 'left',
     expenseReport: false,
-    addExpense: false,
-<<<<<<< HEAD
-    home: true,
-=======
-    login: false
->>>>>>> e7e260d6722fc717d81029cb35f94bcf95c669fb
+    addExpense: false
   };
 
   handleDrawerOpen = () => {
@@ -135,33 +124,20 @@ class PersistentDrawer extends React.Component {
 
   addExpense = () => {
     console.log("Clicked!");
-<<<<<<< HEAD
-    this.setState({home: false, addExpense: true, expenseReport: false, calendar: false, resources: false})
+    this.setState({addExpense: true, expenseReport: false, calendar: false, resources: false})
   }
 
   expenseReport = () => {
-    this.setState({home: false, expenseReport: true, addExpense: false, calendar: false, resources: false})
+    this.setState({expenseReport: true, addExpense: false, calendar: false, resources: false})
   }
 
   calendar = () => {
-    this.setState({home: false, calendar: true, addExpense: false, expenseReport: false, resources: false})
-=======
-    this.setState({addExpense: true, expenseReport: false, login: false, resources: false})
-  }
-
-  expenseReport = () => {
-    this.setState({expenseReport: true, addExpense: false, login: false, resources: false})
-  }
-
-  login = () => {
-    this.setState({login: true, addExpense: false, expenseReport: false, resources: false})
->>>>>>> e7e260d6722fc717d81029cb35f94bcf95c669fb
+    this.setState({calendar: true, addExpense: false, expenseReport: false, resources: false})
     
   }
 
   resources = () => {
     console.log("Clicked!");
-    this.setState({login: false, addExpense: false, expenseReport: false, resources: true})
   }
 
   render() {
@@ -184,8 +160,9 @@ class PersistentDrawer extends React.Component {
         </div>
         <Divider />
         <List>
-          <MailFolderListItems 
+          <MailFolderListItems
             addExpense={this.addExpense}
+            calendar={this.calendar}
             resources={this.resources}
             expenseReport={this.expenseReport}
           >
@@ -225,11 +202,11 @@ class PersistentDrawer extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit"style={{flex: 1}}> 
-                <FontAwesome name="piggy-bank" size="1.5x"  style={{ marginRight: 10}} /> 
+              <Typography variant="title" color="inherit"  style={{flex: 1}}> 
+                <FontAwesome name="piggy-bank" size="1.5x" style={{ marginRight: 10}} /> 
                            Piggy Bank
               </Typography>
-              <Button color="inherit" onClick={this.login}  >Login</Button>
+              <Button color="inherit" onClick={this.handleDrawerClose}>Login</Button>
             </Toolbar>
           </AppBar>
           {before}
@@ -239,18 +216,11 @@ class PersistentDrawer extends React.Component {
               [classes[`contentShift-${anchor}`]]: open,
             })}
           >
-          
             <div className={classes.drawerHeader} />
-            {this.state.home ? <Home  /> : <div></div>}
-            {this.state.addExpense ? <InputAdornment  /> : <div></div>}
-            {this.state.expenseReport ? <Chart /> : <div></div>}
-            {this.state.login ? <Login /> : <div></div>}
-            {this.state.resources ? <Resources /> : <div></div>}
-
+            {this.state.addExpense ? <InputAdornment /> : <div></div>}
+            {this.state.expenseReport ? <expenseChart /> : <div></div>}
           </main>
-          
           {after}
-          
         </div>
       </div>
     );
