@@ -9,7 +9,7 @@ router.route("/")
 // Matches with "/api/tranactions/:id"
 router
   .route("/:id")
-  .get(transactionController.findById)
+  // .get(transactionController.findById)
   .put(transactionController.update)
   .delete(transactionController.remove);
 

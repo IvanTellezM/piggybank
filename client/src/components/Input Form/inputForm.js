@@ -65,24 +65,25 @@ const ranges = [
 class InputAdornments extends Component {
   state = {
     transactions: [],
-    name: "",
+    title: "",
     category: "",
     amount: "",
     date:"",
     note: "",
   };
 
-  // componentDidMount() {
-  //   this.loadTransactions();
-  // }
+  componentDidMount() {
+    // this.loadTransactions();
+  }
 
-  // loadTransactions = () => {
-  //   API.getTransactions()
-  //     .then(res =>
-  //       this.setState({ transactions: res.data, title: "", date: "", category: "", amount: "", notes: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
+  loadTransactions = () => {
+    API.getAllTransactions()
+      .then(res => 
+        console.log(res.data)
+      )
+      .catch(err => console.log(err))
+      console.log(this.state.transactions)
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -93,6 +94,7 @@ class InputAdornments extends Component {
 
   handleFormSubmit = event => {
     console.log("Submitting from front");
+    console.log(this.state);
     event.preventDefault();
  
       API.saveTransaction({
@@ -105,8 +107,9 @@ class InputAdornments extends Component {
       })
         .then(res => console.log(res))
         .catch(err => console.log(err));
-    
   };
+
+
   render() {
     const { classes } = this.props;
 
