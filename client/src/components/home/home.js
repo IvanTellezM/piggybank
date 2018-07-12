@@ -18,6 +18,7 @@ const styles = {
     maxWidth: 600,
     display: "inlineblock", 
     marginBottom: 20,
+    backgroundColor: "yellowcd"
     
   },
   card1: {
@@ -39,57 +40,51 @@ function SimpleMediaCard(props) {
   return (
     <div className={styles.root}>
       <Grid container spacing={24}>
+
         <Grid item xs={6}>
           <Card className={classes.card1} >
           <CardMedia
               className={classes.media}
-              image={require('../../articlePics/box.jpg')}
+              image={require('../../articlePics/money.jpg')}
               title="Piggy Bank"
             />
-            <CardContent>
-              <Typography gutterBottom variant="headline" component="h2">
-              
-              </Typography>
-              <Typography component="p">
-             
-              </Typography>
-            </CardContent>
-            <CardActions>
-              
-            </CardActions>
           </Card>
         </Grid>
 
         <Grid item xs={6}>
           <Card className={classes.card}>
-            {/* <CardMedia
-              className={classes.media}
-              // image={require("../articlePics/article2.jpg")}
-              title="Contemplative Reptile"
-            /> */}
-          
- 
           <CardContent>
-            <Typography variant="headline" component="h2"style={{ textAlign: 'center' }}>
-            Welcome to your PiggyBank!
-            </Typography>
-            <Typography gutterBottom variant="headline" component="h1" style={{ textAlign: 'center' }} variant="display2">
 
-            Manage your personal finance and achieve your financial goals. 
-            Keep track of every penny with in depth report. 
-            Plan and save for your next goal in life.
-
+            <Typography variant="display3" component="h1"style={{ textAlign: 'center', color:'#ff6600' }}>
+            Welcome To PiggyBank!
             </Typography>
+
             
-            
-            
+            <Typography variant="display1" style={{ color:'white'}} gutterBottom>
+            hhhjhfjhfkjhfkjhfkjfhkjfhs
+            </Typography>
+             
+
+            <Typography variant="display1" style={{ color:'#663300'}} gutterBottom>
+            * Manage your personal finance
+            </Typography>
+
+            <Typography variant="display1" style={{ color:'#663300'}} gutterBottom>
+            * Achieve your financial goals
+            </Typography>
+
+            <Typography variant="display1" style={{ color:'#663300'}} gutterBottom>
+            * Keep track of every penny spent
+            </Typography>
+
+            <Typography variant="display1" style={{ color:'#663300'}} gutterBottom>
+            * Plan for the future
+            </Typography>
+
           </CardContent>
-          <CardActions>
-            
-          </CardActions>
           </Card>
         </Grid>    
-    </Grid>
+      </Grid>
     </div>
   );
 }
