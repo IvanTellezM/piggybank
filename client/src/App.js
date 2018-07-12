@@ -16,9 +16,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { MailFolderListItems, otherMailFolderListItems } from './tileData';
 import InputAdornment from './components/Input Form/inputForm';
 import Chart from './components/expense/expenseChart';
-import Login from './containers/login';
+import LoginForm from './components/LoginForm';
+import Home from './components/home/home';
 import Resources from './components/resources';
-
 const FontAwesome = require('react-fontawesome');
 
 const drawerWidth = 240;
@@ -108,7 +108,8 @@ class PersistentDrawer extends React.Component {
     anchor: 'left',
     expenseReport: false,
     addExpense: false,
-    login: false
+    login: false,
+    home : true
   };
 
   handleDrawerOpen = () => {
@@ -127,15 +128,15 @@ class PersistentDrawer extends React.Component {
 
   addExpense = () => {
     console.log("Clicked!");
-    this.setState({addExpense: true, expenseReport: false, login: false, resources: false})
+    this.setState({home: false, addExpense: true, expenseReport: false, login: false, resources: false})
   }
 
   expenseReport = () => {
-    this.setState({expenseReport: true, addExpense: false, login: false, resources: false})
+    this.setState({home: false, expenseReport: true, addExpense: false, login: false, resources: false})
   }
 
   login = () => {
-    this.setState({login: true, addExpense: false, expenseReport: false, resources: false})
+    this.setState({home: false, login: true, addExpense: false, expenseReport: false, resources: false})
     
   }
 
@@ -221,12 +222,12 @@ class PersistentDrawer extends React.Component {
           >
           
             <div className={classes.drawerHeader} />
-
+            {this.state.home ? <Home  /> : <div></div>}
             {this.state.addExpense ? <InputAdornment  /> : <div></div>}
             {this.state.expenseReport ? <Chart /> : <div></div>}
-            {this.state.login ? <Login /> : <div></div>}
+            {this.state.login ? <LoginForm /> : <div></div>}
             {this.state.resources ? <Resources /> : <div></div>}
-
+            
           </main>
           
           {after}
