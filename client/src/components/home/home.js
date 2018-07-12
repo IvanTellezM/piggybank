@@ -14,23 +14,28 @@ const styles = {
   },
   card: {
     height: 600,
-    maxWidth: 600,
+    width: 600,
     display: "inlineblock", 
-    marginBottom: 20,
-    backgroundColor: "yellowcd"
+    marginBottom: 10,
+    marginTop: 27,
+    marginLeft: 80,
+    // backgroundColor: "#ff99bb"
     
   },
   card1: {
-    height:600,
-    maxWidth: 600,
+    height: 600,
+    width: 600,
     display: "inlineblock",
     marginLeft: 100,
-    marginBottom: 100
+    marginTop: 27,
+    marginBottom: 90
   },
   media: {
     height: 600,
-    width: 600,
-    paddingTop: '1', // 16:9
+    width: "37.43em",
+    marginRight: 60
+  
+    // paddingTop: '1', // 16:9
   },
 };
 
@@ -54,29 +59,24 @@ function SimpleMediaCard(props) {
           <Card className={classes.card}>
           <CardContent>
 
-            <Typography variant="display3" component="h1"style={{ textAlign: 'center', color:'#ff6600' }}>
+            <Typography variant="display3" component="h1"style={{ textAlign: 'center', color:'#DB7093' }}>
             Welcome To PiggyBank!
             </Typography>
 
             
-            <Typography variant="display1" style={{ color:'white'}} gutterBottom>
-            hhhjhfjhfkjhfkjhfkjfhkjfhs
-            </Typography>
-             
-
-            <Typography variant="display1" style={{ color:'#663300'}} gutterBottom>
+            <Typography variant="display1" style={{ color:"#66b3ff", marginTop: 30}} gutterBottom>
             * Manage your personal finance
             </Typography>
 
-            <Typography variant="display1" style={{ color:'#663300'}} gutterBottom>
+            <Typography variant="display1" style={{ color:"#66b3ff", marginTop: 25}} gutterBottom>
             * Achieve your financial goals
             </Typography>
 
-            <Typography variant="display1" style={{ color:'#663300'}} gutterBottom>
+            <Typography variant="display1" style={{ color:"#66b3ff", marginTop: 25}} gutterBottom>
             * Keep track of every penny spent
             </Typography>
 
-            <Typography variant="display1" style={{ color:'#663300'}} gutterBottom>
+            <Typography variant="display1" style={{ color:"#66b3ff", marginTop: 25}} gutterBottom>
             * Plan for the future
             </Typography>
 

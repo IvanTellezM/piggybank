@@ -58,6 +58,7 @@ const styles = theme => ({
   menuButton: {
     marginLeft: 12,
     marginRight: 20,
+    color:"#ffb3cc"
   },
   hide: {
     display: 'none',
@@ -75,7 +76,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: "#99ccff",
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -206,11 +207,11 @@ class PersistentDrawer extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit"style={{flex: 1}}> 
-                <FontAwesome name="piggy-bank" size="1.5x"  style={{ marginRight: 10}} /> 
+              <Typography variant="title" color="inherit" style={{flex: 1, color:"#ffb3cc"}}> 
+                <FontAwesome name="piggy-bank" size="1.5x"  style={{ marginRight: 10, color:"#ffb3cc"}} /> 
                            Piggy Bank
               </Typography>
-              <Button color="inherit" onClick={this.login}  >Login</Button>
+              <Button color="inherit" onClick={this.login} style={{color:"#ffb3cc"}} >Login</Button>
             </Toolbar>
           </AppBar>
           {before}
