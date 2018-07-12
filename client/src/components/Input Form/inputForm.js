@@ -92,6 +92,7 @@ class InputAdornments extends Component {
     });
   };
 
+
   handleFormSubmit = event => {
     console.log("Submitting from front");
     console.log(this.state);
@@ -105,8 +106,18 @@ class InputAdornments extends Component {
         note: this.state.note
         
       })
+
         .then(res => console.log(res),
-         alert("Saved!"))
+         alert("saving"), 
+        this.setState({
+          transactions: [],
+          title: "",
+          category: "",
+          amount: "",
+          date:"",
+          note: "",
+        })
+      )
         .catch(err => console.log(err));
   };
 

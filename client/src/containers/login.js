@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-
+import { Link} from "react-router-dom";
 import "./login.css";
+import App from "../App.js";
 
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
   }
-
+  
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
   }
@@ -31,6 +31,11 @@ class Login extends Component {
     event.preventDefault();
   }
 
+  renderRedirect = () => {
+     {
+      return <Link> <App/> </Link>
+    }
+  }
 
   render() {
     return (
@@ -57,17 +62,27 @@ class Login extends Component {
                 type="password"
               />
             </FormGroup>
+            
             <Button
               block
               bsSize="large"
               disabled={!this.validateForm()}
               type="submit"
-            >
+              onClick={this.renderRedirect()}
+                 >
               Login
             </Button>
           </form>
+
           </CardContent>
-          <p align='center' >Don't have an account? Click here to sign up</p>
+          <p align='center' >Don't have an account? Click to sign up</p>
+          <Button
+              block
+              bsSize="xsmall"
+              type="submit"
+            >
+            Sign-up!
+          </Button>
         </Card>
       </div>
     );

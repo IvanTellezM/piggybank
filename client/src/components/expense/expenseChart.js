@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Pie, Bar} from 'react-chartjs-2';
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 class Chart extends Component {
   constructor(props){
@@ -11,14 +11,14 @@ class Chart extends Component {
         datasets: [
           {
             label: 'spending',
-            data: [12,9,15,9,14],
+            data: [300,180,390,150,202],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+              'rgba(255, 99, 132, 0.8)',
+              'rgba(54, 162, 235, 0.8)',
+              'rgba(255, 206, 86, 0.8)',
+              'rgba(75, 192, 192, 0.8)',
+              'rgba(153, 102, 255, 0.8)',
+              'rgba(255, 159, 64, 0.8)'
           ]
           }
         ]
@@ -27,15 +27,21 @@ class Chart extends Component {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         datasets: [
           {
-            
-            data: [105,69,74,88,94,101,88,90,79,104,120,0],
+            label: 'Month',
+            data: [105,69,74,88,94,101,88,90,79,104,90,80,0],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+              'rgba(255, 99, 132, 0.8)',
+              'rgba(54, 162, 235, 0.8)',
+              'rgba(255, 206, 86, 0.8)',
+              'rgba(75, 192, 192, 0.8)',
+              'rgba(153, 102, 255, 0.8)',
+              'rgba(255, 159, 64, 0.8)',
+              'rgba(255, 80, 80, 0.8)',
+              'rgba(54, 162, 235, 0.8)',
+              'rgba(255, 206, 86, 0.8)',
+              'rgba(75, 192, 192, 0.8)',
+              'rgba(153, 102, 255, 0.8)',
+              'rgba(255, 159, 64, 0.8)'
           ]
           }
         ]
@@ -43,22 +49,22 @@ class Chart extends Component {
     }
   }
 
-  componentDidMount() {
-    this.loadTransactions();
-  }
+  // componentDidMount() {
+  //   this.loadTransactions();
+  // }
 
-  loadTransations(){
-    API.findAllTransactions(res => {
-      this.setState()
-    })
-  }
+  // loadTransations(){
+  //   API.findAllTransactions(res => {
+  //     this.setState()
+  //   })
+  // }
 
   render(){
     return (
       <div className="chart">
-      <h1 align='center' style={{ fontWeight: "bold", marginBottom: 10}} >Spending Report</h1>
+      <h1 align='center' style={{ fontWeight: "bold", marginBottom: 10, color: "#f2f2f2"}} >Spending Report</h1>
       
-      <h2 align='center' style={{marginBottom: 10}}> Spending Breakdown by Category</h2>
+      <h2 align='center' style={{marginBottom: 10 , color: "#f2f2f2"}}> Total Spending Breakdown by Category</h2>
         <Pie
           data={this.state.pieChartData}
 
@@ -66,7 +72,7 @@ class Chart extends Component {
             // maintainAspectRatio: false
           }}
         />
-      <h2 align='center'>Spending Breakdown by Month</h2>
+      <h2 align='center' style={{ color: "#f2f2f2"}}>Spending Breakdown by Month</h2>
         <Bar
           data={this.state.barChartData}
           options={{ 

@@ -116,9 +116,9 @@ const TransactionSeeds = [
   }
 ];
 
-db.Transaction
+db.Transactions
   .remove({})
-  .then(() => db.Transaction.collection.insertMany(TransactionSeeds))
+  .then(() => db.Transactions.collection.insertMany(TransactionSeeds))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
