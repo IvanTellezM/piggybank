@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Pie, Bar} from 'react-chartjs-2';
+import API from "../../utils/API";
 
 class Chart extends Component {
   constructor(props){
@@ -40,6 +41,16 @@ class Chart extends Component {
         ]
       }
     }
+  }
+
+  componentDidMount() {
+    this.loadTransactions();
+  }
+
+  loadTransations(){
+    API.findAllTransactions(res => {
+      this.setState()
+    })
   }
 
   render(){

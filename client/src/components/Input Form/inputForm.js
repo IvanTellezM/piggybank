@@ -107,7 +107,6 @@ class InputAdornments extends Component {
       })
         .then(res => console.log(res),
          alert("Saved!"))
-        
         .catch(err => console.log(err));
   };
 

@@ -5,7 +5,6 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
@@ -73,7 +72,7 @@ function SimpleMediaCard(props) {
             <Typography variant="headline" component="h2"style={{ textAlign: 'center' }}>
             Welcome to your PiggyBank!
             </Typography>
-            <Typography gutterBottom variant="headline" component="h1" style={{ textAlign: 'center' }} variant="display2">
+            <Typography gutterBottom variant="headline display2" component="h1" style={{ textAlign: 'center' }} >
 
             Manage your personal finance and achieve your financial goals. 
             Keep track of every penny with in depth report. 
