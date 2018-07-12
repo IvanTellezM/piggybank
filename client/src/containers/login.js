@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import "./login.css";
 
 
-class LoginForm extends Component {
+class login extends Component {
   constructor(props) {
     super(props);
 
@@ -17,19 +17,7 @@ class LoginForm extends Component {
     };
   }
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
-
-  handleChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  }
-
-  handleSubmit = event => {
-    event.preventDefault();
-  }
+  
 
 
   render() {
@@ -74,4 +62,4 @@ class LoginForm extends Component {
     );
   }
 }
-export default LoginForm;
+export default login;

@@ -16,23 +16,22 @@ class SignUpPage extends React.Component {
 
   /**
    * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
+   * the JavaScript event object
+   * @param {object} event 
    */
   processForm = event => {
-    // prevent default action. in this case, action is the form submission event
+    
     event.preventDefault();
     
-    // create a string for an HTTP body message
+    
     const { name, email, password } = this.state.user;
 
-    //const formData = `email=${email}&password=${password}`;
+    
     API.signUp({name, email, password}).then(res => {
-      // change the component-container state
-        // set a message
+      
         localStorage.setItem('successMessage', res.data.message);
 
-        // redirect user after sign up to login page
+       
         this.props.history.push('/login');
         this.setState({
           errors: {}
@@ -64,9 +63,9 @@ class SignUpPage extends React.Component {
     });
   }
 
-  /**
-   * Render the component.
-   */
+  
+   // Render the component.
+   
   render() {
     return (
       <SignUpForm

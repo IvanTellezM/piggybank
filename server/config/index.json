@@ -1,4 +1,0 @@
-{
-  "dbUri": "mongodb://localhost/piggybankdb",
-  "jwtSecret": "a secret phrase!!"
-}

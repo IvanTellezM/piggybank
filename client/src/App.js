@@ -14,11 +14,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { MailFolderListItems, otherMailFolderListItems } from './tileData';
-import InputAdornment from './components/Input Form/inputForm';
-import Chart from './components/expense/expenseChart';
-import LoginForm from './components/LoginForm';
+import InputAdornment from './components/Dashboard.jsx';
+import Chart from './components/expense/expenseChart'; 
+import login from './containers/login';
 import Home from './components/home/home';
 import Resources from './components/resources';
+
 const FontAwesome = require('react-fontawesome');
 
 const drawerWidth = 240;
@@ -135,7 +136,7 @@ class PersistentDrawer extends React.Component {
     this.setState({home: false, expenseReport: true, addExpense: false, login: false, resources: false})
   }
 
-  login = () => {
+   login = () => {
     this.setState({home: false, login: true, addExpense: false, expenseReport: false, resources: false})
     
   }
@@ -210,7 +211,7 @@ class PersistentDrawer extends React.Component {
                 <FontAwesome name="piggy-bank" size="1.5x"  style={{ marginRight: 10}} /> 
                            Piggy Bank
               </Typography>
-              <Button color="inherit" onClick={this.login}  >Login</Button>
+              <Button color="inherit" onClick={this.login} style={{color:"#ffb3cc"}} >Login</Button>
             </Toolbar>
           </AppBar>
           {before}
@@ -225,7 +226,7 @@ class PersistentDrawer extends React.Component {
             {this.state.home ? <Home  /> : <div></div>}
             {this.state.addExpense ? <InputAdornment  /> : <div></div>}
             {this.state.expenseReport ? <Chart /> : <div></div>}
-            {this.state.login ? <LoginForm /> : <div></div>}
+            {this.state.login ? <loginForm/> : <div></div>}
             {this.state.resources ? <Resources /> : <div></div>}
             
           </main>

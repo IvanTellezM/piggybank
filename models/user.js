@@ -1,6 +1,5 @@
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
 // define the User model schema
@@ -51,4 +50,4 @@ UserSchema.pre('save', function saveHook(next) {
 
 
 module.exports = mongoose.model('User', UserSchema);
-module.exports = User;
+

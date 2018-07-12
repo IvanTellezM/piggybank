@@ -13,7 +13,7 @@ class DashboardPage extends React.Component {
    * This method will be executed after initial rendering.
    */
   componentDidMount() {
-    // API.dashboard(Auth.getToken())
+    API.dashboard(Auth.getToken())
     API.dashboard(Auth())
     .then(res => {
       this.setState({
@@ -27,7 +27,7 @@ class DashboardPage extends React.Component {
    * Render the component.
    */
   render() {
-    // return (<Dashboard secretData={this.state.secretData} user={this.state.user} />);
+    return (<Dashboard secretData={this.state.secretData} user={this.state.user} />);
     return (<Dashboard data={this.state.data} user={this.state.user} />);
   }
 

@@ -1,44 +1,54 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+// import "./login.css";
 import Auth from '../utils/Auth';
-import LoginForm from '../components/LoginForm.jsx';
-import API from '../utils/API';
+import LoginForm from '../components/loginForm.jsx';
+import API from '../utils/API'
 
-class LoginPage extends React.Component {
+class loginPage extends React.Component {
+  
   // set the initial component state
   state = {
-    errors: {},
-    successMessage: '',
-    user: {
-      email: '',
-      password: ''
-    }
-  }
-  
-  componentDidMount(){
-    const storedMessage = localStorage.getItem('successMessage');
-    let successMessage = '';
+       errors: {},
+      successMessage: "",
+       user: {
+       email: "",
+       password: ""
+             }
+        }
+        
 
-    if (storedMessage) {
-      successMessage = storedMessage;
-      localStorage.removeItem('successMessage');
-    }
-    this.setState({ successMessage });
-  }
+  
+      componentDidMount(){
+       const storedMessage = localStorage.getItem('successMessage');
+        let successMessage = ''; 
+
+         if (storedMessage) {
+          successMessage = storedMessage;
+          localStorage.removeItem('successMessage');
+          }
+        this.setState({ successMessage });
+        }
+
+
   /**
    * Process the form.
    *
-   * @param {object} event - the JavaScript event object
+      * @param {object} event - the JavaScript event object
    */
-  processForm = event => {
-    // prevent default action. in this case, action is the form submission event
-    event.preventDefault();
+       processForm = event => {
+      // prevent default action. in this case, action is the form submission event
+       event.preventDefault();
 
-    // create a string for an HTTP body message
-    const { email, password } = this.state.user;
+        // create a string for an HTTP body message
+        const { email, password } = this.state.user;
 
-    //const formData = `email=${email}&password=${password}`;
-    API.login({email, password}).then(res => {
+        //const formData = `email=${email}&password=${password}`;
+        API.login({email, password}).then(res => {
       // change the component-container state
         // save the token
         Auth.authenticateUser(res.data.token);
@@ -68,35 +78,40 @@ class LoginPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  changeUser = event => {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
+     changeUser = event => {
+      const field = event.target.name;
+      const user = this.state.user;
+      user[field] = event.target.value;
 
-    this.setState({
-      user
-    });
-  }
+       this.setState({
+        user
+       });
+     }
 
   /**
    * Render the component.
    */
-  render() {
-    return (
-      <LoginForm
+     render() {
+       return (
+        <loginForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
         errors={this.state.errors}
         successMessage={this.state.successMessage}
         user={this.state.user}
-      />
-    );
-  }
+         />
+        );
+       }
 
-}
+}   
 
-LoginPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
-export default LoginPage;
+
+     loginPage.contextTypes = {
+          router: PropTypes.object.isRequired
+
+       };
+
+        export default loginPage;
+
+
